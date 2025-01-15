@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo Preditivo - Formulário de Entrada</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Previsão com Modelo Preditivo</h2>
+    <form action="/" method="POST">
+        <label for="idade">Idade:</label>
+        <input type="number" id="idade" name="idade" placeholder="Digite sua idade" required>
+
+        <label for="genero">Gênero:</label>
+        <select id="genero" name="genero" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="masculino">Masculino</option>
+            <option value="feminino">Feminino</option>
+            <option value="outro">Outro</option>
+        </select>
+
+        <label for="tempo_trabalho">Tempo de Trabalho (anos):</label>
+        <input type="number" id="tempo_trabalho" name="tempo_trabalho" placeholder="Digite o tempo de trabalho" required>
+
+        <label for="setor">Setor de Trabalho:</label>
+        <input type="text" id="setor" name="setor" placeholder="Ex: Tecnologia, Saúde, etc." required>
+
+        <button type="submit">Enviar Dados</button>
+    </form>
+
+    {% if previsao is not none %}
+        <div class="resultado">
+            <h3>Resultado da Previsão:</h3>
+            <p>A previsão para o seu perfil é: {{ previsao }}</p>
+        </div>
+    {% endif %}
+
+</body>
+</html>
